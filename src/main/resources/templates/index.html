@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Reminder</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .full-height {
+            height: 100vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 84px;
+        }
+
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+
+        @media  screen and (max-width: 768px) {
+            #logo{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="flex-center position-ref full-height">
+    <div class="top-right links">
+        <!--/*@thymesVar id="user" type="com.marklux.reminder.domain.User"*/-->
+        <a th:if="${user} == null" href="/login">登录</a>
+        <a th:if="${user} == null" href="/register" >注册</a>
+        <a th:if="${user} != null" href="/home">我的备忘</a>
+    </div>
+
+    <div class="content">
+        <div class="title m-b-md">
+            Reminder
+        </div>
+
+        <div class="links">
+            <p>打造简单好用的备忘录</p>
+        </div>
+    </div>
+</div>
+<script>
+    function changeTheme(bgColor,fontColor) {
+        var body = document.getElementsByTagName("body")[0];
+        body.style.backgroundColor = bgColor;
+        body.style.color = fontColor;
+        var links = document.getElementsByTagName('a');
+        for (var i = 0;i<links.length;i++) {
+            links[i].style.color = fontColor;
+        }
+        document.getElementById('Artboard').style.stroke = fontColor;
+    }
+
+    changeTheme('#4285f4','#ffffff');
+</script>
+</body>
+</html>

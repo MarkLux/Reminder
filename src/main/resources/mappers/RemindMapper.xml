@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.marklux.reminder.mapper.RemindMapper">
+    <select id="getRemindsByUserId" resultType="com.marklux.reminder.domain.Remind">
+        SELECT * FROM reminds where user_id = #{userId};
+    </select>
+    <select id="getRemind" resultType="com.marklux.reminder.domain.Remind">
+        SELECT * FROM reminds where id = #{id};
+    </select>
+    <insert id="createRemind" useGeneratedKeys="true" keyProperty="id" parameterType="com.marklux.reminder.domain.Remind">
+        INSERT INTO reminds(user_id, content, created_at)
+        VALUES (#{userId},#{content},#{createdAt});
+    </insert>
+    <delete id="deleteRemind" parameterType="java.lang.Long">
+        DELETE FROM reminds
+        WHERE id = #{id};
+    </delete>
+    <update id="updateRemind" parameterType="com.marklux.reminder.domain.Remind">
+        UPDATE reminds SET
+        is_pinned = #{isPinned}
+        WHERE id = {#id};
+    </update>
+</mapper>
